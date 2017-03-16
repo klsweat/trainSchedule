@@ -67,7 +67,7 @@
      <div class="col-md-3"></div>
         <div class="col-md-3"></div>
         <div class="col-md-3"></div>
-        <div class="col-md-3" style="margin-right: -100px;">
+        <div class="col-md-3">
           <div class="bd-example" style="float: right;">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login-modal">
             Admin Login
@@ -143,7 +143,7 @@
 
 
            <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped" id="table">
               <thead>
                 <tr>
 	                <th>Train Name</th>
@@ -219,14 +219,17 @@
   	<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
 
 	<script type="text/javascript">
-  localStorage.clear();
+  
 
              //when you click
             $("#login").on("click", function(){
+                //prevent form from submitting
                 event.preventDefault();
-
+                  //get username
                   var un = $('#login_username').val().toLowerCase();
+                  //get password
                   var pw = $('#login_password').val().toLowerCase();
+
                   var authun = "admin";
                   var authpw = "password";
                   if (un === authun && pw === authpw) {
@@ -265,10 +268,10 @@
   	var frequency = "";
   	var ftime = "";
 
-  	//Displays timepicker plugin, so you don't have to type in
-  	$(function() {
-		$('#ftime-input').timepicker({ 'timeFormat': 'Hi' });
-	});
+  //Displays timepicker plugin, so you don't have to type in
+  $(function() {
+		  $('#ftime-input').timepicker({ 'timeFormat': 'Hi' });
+	 });
 
   		function putOnPage() {
 
@@ -311,9 +314,9 @@
 		    console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"));
 
 
-		  $("#employees").append("<tr class='well'><td>" + childSnapshot.val().name + "</td><td>" + childSnapshot.val().destination + "</td><td>" + childSnapshot.val().frequency +"</td>" + "<td>" + nextTrainTime + "</td><td>" + tMinutesTillTrain + "</tr>");
+		  $("#employees").append("<tr class='well'><td>" + childSnapshot.val().name + "</td><td>" + childSnapshot.val().destination + "</td><td>" + childSnapshot.val().frequency +"</td>" + "<td id='ntt'>" + nextTrainTime + "</td><td>" + tMinutesTillTrain + "</tr>");
 	
-
+      updateTime();
 
 		}, function(errorObject){
 			console.log("The read failed: " + errorObject.code);
@@ -384,6 +387,16 @@
   //	database.ref().orderByChild("dateAdded").limitToLast(1).on("child_added", function(snapshot) {
   //		$("#name-input").html(snapshot.val().name);
   //	});
+
+  function updateTime(){
+  var table = $("#table");
+   var rowCount = table.rows.length;
+   console.log("rowCount: " + rowCount);
+
+  }
+
+  
+
 
 
 
