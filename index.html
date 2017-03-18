@@ -137,7 +137,7 @@
           <!-- Panel Heading for the retrieved articles box -->
           <div class="panel-heading">
             <h3 class="panel-title">
-            <strong>Employee Data Management</strong></h3>
+            Employee Data Management</h3>
           </div>
           <div class="panel-body" id="well-section">
 
@@ -174,7 +174,7 @@
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">
-            <strong> Add Train</strong></h3>
+            Add Train</h3>
           </div>
           <div class="panel-body">
             <!-- Here we create an HTML Form for handling the inputs-->
@@ -316,7 +316,6 @@
 
 		  $("#employees").append("<tr class='well'><td>" + childSnapshot.val().name + "</td><td>" + childSnapshot.val().destination + "</td><td>" + childSnapshot.val().frequency +"</td>" + "<td id='ntt'>" + nextTrainTime + "</td><td>" + tMinutesTillTrain + "</tr>");
 	
-      updateTime();
 
 		}, function(errorObject){
 			console.log("The read failed: " + errorObject.code);
@@ -388,12 +387,6 @@
   //		$("#name-input").html(snapshot.val().name);
   //	});
 
-  function updateTime(){
-  var table = $("#table");
-   var rowCount = table.rows.length;
-   console.log("rowCount: " + rowCount);
-
-  }
 
   
 
